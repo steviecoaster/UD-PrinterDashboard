@@ -15,7 +15,7 @@ function ReturnZeroIfNegitive ($Data) {
 $SNMP = new-object -ComObject olePrn.OleSNMP
 
 # You can put a | Where-Object type filter here to restrict which printers get displayed in the dashboard
-$All_Printers = get-printer -ComputerName $Config.PrintServer | Where-Object {$_.Name -like "VN-*" -and $_.Name -Like "*Color*"}
+$All_Printers = get-printer -ComputerName $Config.PrintServer
 
 
 [array] $Printers = @()
@@ -23,11 +23,10 @@ $All_Printers = get-printer -ComputerName $Config.PrintServer | Where-Object {$_
 foreach ($Printer in $All_Printers) {
     $Address = $Printer.PortName
     $Name = $Printer.Name
-    if (!(Test-Connection $address -Quiet -Count 1)) {$onlineState = $False; $onlineColor = "danger"}
+    if (!(Test-Connection $address -Quiet -Count 1)) {$onlineState = $False}
 
     if (Test-Connection $address -Quiet -Count 1) {
         $onlineState = $True
-        $onlineColor = "success"
 
         $SNMP.Open($Address, "public", 2, 3000)
 
