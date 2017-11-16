@@ -6,7 +6,7 @@ This printer dashboard is built using the [UniversalDashboard](http://www.poshud
 
 There are two parts to this script. The `Get-PrinterData.PS1` script, which uses SNMP to talk to each printer from the print server and get toner data. That data is then output as a JSON file. As well as `Printer-Dashboard.PS1` which takes the data exported and displays it as a dashboard. You will want to configure the `Get-PrinterData.PS1` file to run on a schedule using Task Scheduler or some other scheduling method.
 
-The SNMP endpoints should be standard across most printers. However, your millage may vary. So test it in your inviroment, and feel free to comment / pull request for the **Verified Working Printers** list to be updated.
+The SNMP endpoints should be standard across most printers. However, your millage may vary. So test it in your environment, and feel free to comment / pull request for the **Verified Working Printers** list to be updated.
 
 **Verified Working Printers**
 * HP M553 Color Printers
